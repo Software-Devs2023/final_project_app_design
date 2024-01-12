@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style_cart.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header-left">
+          <a href="/" class="header-logo-a">
+            <img src="img/tech_motherboard_icon_157409.ico" url="index.html" />
+          </a>
+        </div>
+        <div class="header-right">
+          <input class = "search-box" placeholder="Search">
+          </input>
+          <ul class="header-right-list">
+            <li>
+              <a href="">Home</a>
+            </li>
+            <li>
+              <a href="">Contact</a>
+            </li>
+          </ul>
+          <div class="header-right-button">
+            <button class="bg-white">CART</button>
+            <button class="bg-black">LOGIN</button>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="cart">
+        <div class="cart-header">
+          <div class="cart-title">Shopping Cart</div>
+          <div class="cart-sort">Sort by: Price</div>
+        </div>
+        <ul class="cart-items">
+          <li class="cart-item">
+            <img src="iphone.jpg" alt="iPhone" class="cart-item-image">
+            <div class="cart-item-info">
+              <div class="cart-item-name">iPhone 11 Pro 256GB, Navy Blue</div>
+              <div class="cart-item-price">$900</div>
+            </div>
+            <div class="cart-item-quantity">
+              <button class="cart-item-quantity-button">-</button>
+              <input type="number" value="2" class="cart-item-quantity-input">
+              <button class="cart-item-quantity-button">+</button>
+            </div>
+          </li>
+          <li class="cart-item">
+            <img src="samsung.jpg" alt="Samsung" class="cart-item-image">
+            <div class="cart-item-info">
+              <div class="cart-item-name">Samsung Galaxy Note 10 256GB, Navy Blue</div>
+              <div class="cart-item-price">$900</div>
+            </div>
+            <div class="cart-item-quantity">
+              <button class="cart-item-quantity-button">-</button>
+              <input type="number" value="2" class="cart-item-quantity-input">
+              <button class="cart-item-quantity-button">+</button>
+            </div>
+          </li>
+        </ul>
+        <div class="cart-footer">
+          <div class="cart-total">Total: $3600</div>
+          <button class="cart-checkout-button">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
