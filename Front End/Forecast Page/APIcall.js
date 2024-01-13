@@ -28,5 +28,14 @@ const GetPrediction= async(values)=>{
         body:JSON.stringify(obj)
     })
     const jsonResponse = await response.json();
-    console.log(jsonResponse.prediction);
+    let data=jsonResponse.prediction;
+
+    const ul = document.querySelector('ul');
+    ul.innerHTML = '';
+    for(let i=0;i<=data.length-1;i++)
+    {
+        let list = document.createElement("li")
+        list.textContent=data[i].toFixed(2)
+        document.querySelector("ul").appendChild(list)
+    }
 }

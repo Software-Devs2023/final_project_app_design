@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
         <script defer type="module" src="Products.js"></script>
+        <script defer type="module" src="Time.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js" integrity="sha512-Xm9qbB6Pu06k3PUwPj785dyTl6oHxgsv9nHp7ej7nCpAqGZT3OZpsELuCYX05DdonFpTlBpXMOxjavIAIUwr0w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body>
         <header>
@@ -13,13 +15,11 @@
             <button  class="search_button">
                 <img src="../Image//Vector.png">
             </button>
-            <div class = "real-time" style="list-style: no;">
-                <a> The time is: </a>
-            </div>
             <div class = "header-right">
                 <a href="index.html" style="margin-left: 360px;"><h3>Home</h3></a>
                 <a href="../Cart/cart.html" style="margin-left: 50px;"><h3>Cart</h3></a>
                 <a href="../Login Page/index.html" style="margin-left: 50px;"><h3>Account</h3></a>
+                <a href="../Forecast Page/index.html" style="margin-left: 50px;"><h3>Weather Forecast</h3></a>
             </div>
         </header>
         <main>
@@ -329,7 +329,7 @@
                 <p style="font-size: 25px; padding-bottom: 8px; font-weight: lighter;">Vietnam, Ho Chi Minh</p>
                 <p style="font-size: 25px; font-weight: lighter; margin-bottom: 93px;">+84 988888888</p>
                 <h3>Follow Us</h3>
-                <ul>
+                <ul style="display: flex; gap:20px">
                     <li class="contact">
                         <a href="#" style="display: block; background-color:#55ACEE;">
                             <img class="icon" src="../Image/logos_twitter.png" style="padding: 10px 10px 5px 10px;">
@@ -354,14 +354,9 @@
             </div>
             <div style="margin-left: 500px; border-radius: 30px; background: #444; color:  #FFF; margin-top: 33px; height: 144px; display: flex; flex-direction: column; align-items: center; padding-inline: 60px; gap:10px;">
                 <p style="font-size: 28px; font-weight: 700; margin-top: 9px;">Ho Chi Minh</p>
-                <p style="font-size: 26px; font-weight: 700;"">09:03</p>
+                <p style="font-size: 26px; font-weight: 700;" class="realtime"></p>
                 <p>Date,time</p>
             </div>
-            <div class="predict">
-                <p style="font-size: 32px; font-weight: 700;">24h Forecast:</p>
-                <div class="content">
-
-                </div>
             </div>
         </footer>
     </body>
