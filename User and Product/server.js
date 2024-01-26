@@ -34,10 +34,11 @@ app.use('/auth',require('./Routes/Auth'))
 app.use('/refresh',require('./Routes/RefreshToken'))
 app.use('/logout',require('./Routes/Logout'))
 
-app.use(express.static(path.join(__dirname,'..',"Front End")))
+app.use(express.static(path.join(__dirname,'..',"Front End 26-2")))
 
-app.use(verifyJWT)
+//app.use(verifyJWT)
 app.use('/products',require('./Rest API/ProductsAPI'))
+app.use('/accounts',require('./Rest API/UserAPI'))
 
 app.all('*',(req,res)=>{
     res.status(404)

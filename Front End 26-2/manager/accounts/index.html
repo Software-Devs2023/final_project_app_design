@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Coffee Shop Manager </title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="../../logo/logo.png">
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="navbar">
+        <div class="logo">
+          <img src="../../logo/logo.png" alt="">
+          <h1>Manager</h1>
+        </div>
+        <ul>
+          <li><a href="../products/index.html">
+            <i class="fas fa-tasks" ></i>
+            <span class="nav-item">Products</span>
+          </a>
+          </li>
+
+          <li><a href="#">
+            <i class="fas fa-user"style="color: blueviolet;" ></i>
+            <span class="nav-item" style="color: blueviolet;">Accounts</span>
+          </a>
+          </li>
+
+          <li><a href="#" class="logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="nav-item">Logout</span>
+          </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="main">
+      <div class="main-top">
+        <p>Explore the universe!</p>
+      </div>
+      <div class="main-body">
+        <h1> Account Manager </h1>
+      
+      <div class="search_bar">
+        <input class="text" type="search" placeholder="Search name of the accounts here..." >
+        <button class="search" style="border-radius: 10px; font-weight: bold;">Submit</button>
+      </div>
+
+      <div class="row">
+        <p id="totalProduct"></p>
+        <a href="../sign_up/index.html"> Register New Account </a>
+      </div>
+
+      <div class="list-product"></div>
+    </div>
+    </section>
+  </div>
+<script src="./Search.js"></script>
+</body>
+</html>
