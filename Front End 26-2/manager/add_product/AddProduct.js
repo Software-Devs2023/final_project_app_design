@@ -17,6 +17,9 @@ function UploadImage(){
 const APICall=async(form,obj)=>{
     const response=fetch("http://localhost:4200/products",{
         method:'POST',
+        headers:{
+            "Authorization":`Bearer ${sessionStorage.getItem("AccessToken")}`
+        },
         body:form
     })
 }

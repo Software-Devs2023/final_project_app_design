@@ -41,7 +41,7 @@ const Display=(products)=>{
         let html=`<div class="job_card">
                     <div class="job_details">
                     <div class="img">
-                        <img id="Index${i}" src="../../../User and Product/Rest API/ProductImage/${products[i].image_path}" alt="First Image" style="width:70px; height:70px;"></img>
+                        <img id="Index${i}" src="./ProductImage/${products[i].image_path}" alt="First Image" style="width:70px; height:70px;"></img>
                         <img src="${products[i].img_link}" id="Index${i}_backupImage" style="display: none; width:70px; height:70px;">
                     </div>
                     <div class="text">
@@ -79,19 +79,24 @@ const Converter=(A)=>{
     return s;
 }
 const DeleteProduct= async(id)=>{
-    const response=await fetch("http://localhost:4200/products",{
-        method:"DELETE",
-        headers:{
-            "Content-Type":"application/json",
-            "Authorization":`Bearer ${sessionStorage.getItem("AccessToken")}`
-        },
-        body:JSON.stringify({id:id}) 
-    })
-    if(response.ok)
-    {
-        const content=document.querySelector(".text").value
-        console.log(content)
-        if(!content) GetAllProducts()
-        else GetSpecifiedProducts(content)
+    const roles=JSON.parse(sessionStorage.getItem("Roles"))
+    if(roles&&(roles.Admin||roles.Editor)){
+        const response=await fetch("http://localhost:4200/products",{
+            method:"DELETE",
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${sessionStorage.getItem("AccessToken")}`
+            },
+            body:JSON.stringify({id:id}) 
+        })
+        if(response.ok)
+        {
+            const content=document.querySelector(".text").value
+            console.log(content)
+            if(!content) GetAllProducts()
+            else GetSpecifiedProducts(content)
+        }
     }
+    else alert("You are not authorized")
+    
 }

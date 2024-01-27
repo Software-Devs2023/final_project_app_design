@@ -5,14 +5,14 @@ const verifyRoles=require('../Config/VerifyRoles')
 const ProductsDB=require('../DB Data/Products')
 const path=require('path')
 const multer=require('multer')
-const upload = multer({dest :path.join(__dirname,"ProductImage")}).single('image') 
+const upload = multer({dest :path.join(__dirname,"..","..","Front End 26-2","manager","products","ProductImage")}).single('image') 
 router.route('/')
     .get(async(req,res)=>{
         const products=await ProductsDB.find()
         if(!products) return res.sendStatus(204).json({"message":"No Product Found."})
         res.json({products})
     })
-    .post(upload,async(req,res)=>{
+    .post(verifyRoles(ROLES_LIST.Editor,ROLES_LIST.Admin),upload,async(req,res)=>{
         req.body.content=JSON.parse(req.body.content)
         console.log(req.body.content)
         if(!req?.body.content?.name||!req?.body.content?.price||!req?.body.content?.category||!req?.body.content?.quantity) {
@@ -37,7 +37,7 @@ router.route('/')
         }
         catch(err){res.status(500).json({'message':'Internal Server Error'})}
     })
-    .put(async(req,res)=>{
+    .put(verifyRoles(ROLES_LIST.Editor,ROLES_LIST.Admin),async(req,res)=>{
         if(!req?.body?.id) return res.status(400).json({"message":"ID is required !"})
         try{
             const product=await ProductsDB.findOne({_id:req.body.id}).exec()
@@ -52,7 +52,7 @@ router.route('/')
         }
         catch(err){res.status(500).json({"message":"No Product matches this ID" })}
     })
-    .delete(async(req,res)=>{
+    .delete(verifyRoles(ROLES_LIST.Editor,ROLES_LIST.Admin),async(req,res)=>{
         if(!req?.body?.id) return res.status(400).json({"message":"ID is required !"})
         try{
             const product=await ProductsDB.findOne({_id:req.body.id}).exec()

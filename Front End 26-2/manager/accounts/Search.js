@@ -67,19 +67,24 @@ const Converter=(A)=>{
     return s;
 }
 const DeleteProduct= async(id)=>{
-    const response=await fetch("http://localhost:4200/accounts",{
-        method:"DELETE",
-        headers:{
-            "Content-Type":"application/json",
-            "Authorization":`Bearer ${sessionStorage.getItem("AccessToken")}`
-        },
-        body:JSON.stringify({id:id}) 
-    })
-    if(response.ok)
-    {
-        const content=document.querySelector(".text").value
-        console.log(content)
-        if(!content) GetAllUsers()
-        else GetSpecifiedUsers(content)
+    const roles=JSON.parse(sessionStorage.getItem("Roles"))
+    if(roles&&roles.Admin){
+        const response=await fetch("http://localhost:4200/accounts",{
+            method:"DELETE",
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":`Bearer ${sessionStorage.getItem("AccessToken")}`
+            },
+            body:JSON.stringify({id:id}) 
+        })
+        if(response.ok)
+        {
+            const content=document.querySelector(".text").value
+            console.log(content)
+            if(!content) GetAllUsers()
+            else GetSpecifiedUsers(content)
+        }
     }
+    else alert("You are not authorized")
+    
 }

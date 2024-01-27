@@ -17,6 +17,7 @@ const ErrorHandler = require('./Config/errorHandler')
 
 const cookieParser=require('cookie-parser')
 const mongoose=require('mongoose')
+const verifyRoles = require('./Config/VerifyRoles')
 
 connectDB()
 //app.use(Logger)
@@ -36,7 +37,7 @@ app.use('/logout',require('./Routes/Logout'))
 
 app.use(express.static(path.join(__dirname,'..',"Front End 26-2")))
 
-//app.use(verifyJWT)
+app.use(verifyJWT)
 app.use('/products',require('./Rest API/ProductsAPI'))
 app.use('/accounts',require('./Rest API/UserAPI'))
 
