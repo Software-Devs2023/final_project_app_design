@@ -1,43 +1,41 @@
-document.addEventListener('DOMContentLoaded', () => {
-    fetch('http://localhost:4200/product')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        populateTable(data);
-      })
-      .catch(error => {
-        console.error('Fetch failed:', error);
-      });
-
+document.addEventListener('DOMContentLoaded', async() => {
+    const response =await fetch('http://localhost:4200/products',{
+      method:"GET",
+      headers:{
+        "Authorization":`Bearer ${sessionStorage.getItem("AccessToken")}`
+      }
+    })
+    const content=await response.json()
+    populateTable(content.products)
+})
     function populateTable(data) {
       console.log(data);
       const tableBody = document.querySelector('.container');
   
       // Xóa nội dung cũ của bảng (nếu có)
       tableBody.innerHTML = '';
-      let html = '';
       // Lặp qua mỗi mục dữ liệu và thêm vào bảng
-      data.data.forEach(item => {
-        let product_item = `
-        <div class="product_container">
+      for(let i in data)
+      {
+        let html=`
+        <div class="product_container" style=" background-color: #f2f2f2;
+        padding: 20px;
+        text-align: center;">
         <div class="box">
         <div class="box-content">
           <div class="img-box">
-            <img src="${item.image_path} ${item.img.link}" alt="">
+            <img id="Index${i}" src="../manager/products/ProductImage/${data[i].image_path}" alt="First Image" style="width:150px; height:150px;"></img>
+            <img src="${data[i].img_link}" id="Index${i}_backupImage" style="display: none; width:150px; height:150px;">
           </div>
           <div class="detail-box">
             <div class="text">
               <h6>
-                ${item.name}
+                ${data[i].name}
               </h6>
             </div>
             <div class="like">
               <h6>
-                 ${item.price}
+                 ${data[i].price}
               </h6>
             </div>
           </div>
@@ -45,9 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         </div>
       `;
-        html += product_item;
-      });
-      tableBody.innerHTML = html;
+      tableBody.innerHTML += html;
+      document.querySelector(`#Index${i}`).addEventListener("error",()=>{
+        document.querySelector(`#Index${i}`).style.display='none'
+        document.querySelector(`#Index${i}_backupImage`).style.display='block'
+      })
     }
-  });
+        
+      
+    }
+    function loadBackupImage(id){
+      document.querySelector(`.${id}`).style.display='none'
+      document.querySelector(`.${id}_backupImage`).style.display='flex'
+  }
   

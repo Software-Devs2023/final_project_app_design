@@ -54,7 +54,6 @@ const Display=(products)=>{
                     <span>Quantity: ${products[i].quantity}</span>
                     <div>
                         <button class = "delete_button" onclick="DeleteProduct('${products[i]._id}')"> DELETE </button>
-                        <button class = "edit_button"> EDIT </button>
                     </div>
                     </div>
                 </div>`

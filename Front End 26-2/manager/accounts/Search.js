@@ -51,7 +51,6 @@ const Display=(accounts)=>{
                     <div class="price">
                     <div>
                         <button class = "delete_button" onclick="DeleteProduct('${accounts[i]._id}')"> DELETE </button>
-                        <button class = "edit_button"> EDIT </button>
                     </div>
                     </div>
                 </div>`
